@@ -4,7 +4,7 @@
 
 import pytest
 from click.testing import CliRunner
-from zeroae.nifi_flowfile import cli
+from nifi.flowfile import cli
 
 
 @pytest.fixture
@@ -26,9 +26,9 @@ def test_content(response):
 def test_command_line_interface():
     """Test the CLI."""
     runner = CliRunner()
-    result = runner.invoke(cli.nifi_flowfile)
+    result = runner.invoke(cli.flowfile)
     assert result.exit_code == 0
     assert "Replace this message" in result.output
-    help_result = runner.invoke(cli.nifi_flowfile, ["--help"])
+    help_result = runner.invoke(cli.flowfile, ["--help"])
     assert help_result.exit_code == 0
     assert "--help  Show this message and exit." in help_result.output

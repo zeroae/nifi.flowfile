@@ -1,5 +1,5 @@
 ======================
-zeroae's nifi_flowfile
+NiFi's FlowFile Format
 ======================
 
 .. image:: https://img.shields.io/github/workflow/status/zeroae/nifi.flowfile/pypa-conda?label=pypa-conda&logo=github&style=flat-square

@@ -1,5 +1,5 @@
 ### Environment Information
-* zeroae's nifi_flowfile version:
+* NiFi's FlowFile Format version:
 * Python version:
 * Operating System:
 

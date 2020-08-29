@@ -1,4 +1,4 @@
-Welcome to zeroae's nifi_flowfile's documentation!
+Welcome to NiFi's FlowFile Format's documentation!
 ======================================
 
 .. toctree::
