@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = zeroae/nifi_flowfile
+SPHINXPROJ    = nifi/flowfile
 SOURCEDIR     = .
 BUILDDIR      = _build
 

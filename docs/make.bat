@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=nifi_flowfile
+set SPHINXPROJ=flowfile
 
 if "%1" == "" goto help
 

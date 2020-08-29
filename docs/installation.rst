@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install zeroae's nifi_flowfile, run this command in your terminal:
+To install NiFi's FlowFile Format, run this command in your terminal:
 
 .. code-block:: console
 
     $ pip install nifi.flowfile
 
-This is the preferred method to install zeroae's nifi_flowfile, as it will always install the most recent stable release.
+This is the preferred method to install NiFi's FlowFile Format, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,7 +26,7 @@ you through the process.
 From sources
 ------------
 
-The sources for zeroae's nifi_flowfile can be downloaded from the `Github repo`_.
+The sources for NiFi's FlowFile Format can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 

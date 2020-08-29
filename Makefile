@@ -69,9 +69,9 @@ coverage: ## check code coverage quickly with the default Python
 	$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/zeroae.*.rst
+	rm -f docs/nifi.*.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ src/zeroae
+	sphinx-apidoc -o docs/ src/nifi
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
@@ -89,7 +89,7 @@ dist: clean ## builds source and wheel package
 
 .PHONY: wheels
 wheels: dist  ## downloads wheel dependencies
-	pip download -f dist -d wheels zeroae-nifi_flowfile
+	pip download -f dist -d wheels nifi-flowfile
 	ls -l wheels
 
 dist-conda: clean  ## builds conda-package

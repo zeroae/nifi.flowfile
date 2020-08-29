@@ -51,7 +51,7 @@ conda_rosetta_stone = {
 setup_kwargs = dict(
     author="Patrick Sodré",
     author_email="patrick@zero-ae.com",
-    use_scm_version={"write_to": "src/zeroae/nifi_flowfile/_version.py"},
+    use_scm_version={"write_to": "src/nifi/flowfile/_version.py"},
     python_requires=">=3.6",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -66,8 +66,8 @@ setup_kwargs = dict(
     description="NiFi FlowFile Serializer",
     # fmt: off
     entry_points={
-        "zeroae.cli": [
-            "nifi-flowfile=zeroae.nifi_flowfile.cli:nifi_flowfile",
+        "nifi.cli": [
+            "flowfile=nifi.flowfile.cli:flowfile",
         ],
     },
     # fmt: on
@@ -76,8 +76,8 @@ setup_kwargs = dict(
     long_description=readme,
     long_description_content_type="text/x-rst",
     include_package_data=True,
-    keywords="nifi_flowfile zeroae",
-    name="zeroae-nifi_flowfile",
+    keywords="flowfile nifi",
+    name="nifi-flowfile",
     package_dir={"": "src"},
     packages=find_namespace_packages(where="./src"),
     setup_requires=setup_requirements,

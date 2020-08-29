@@ -30,9 +30,9 @@ cookiecutter:
   #
   # These were guess based on the repository information
   # You probably want to customize them.
-  project_namespace: "zeroae"
-  project_slug: "nifi_flowfile"
-  project_name: "zeroae's nifi_flowfile"
+  project_namespace: nifi
+  project_slug: flowfile
+  project_name: NiFi's FlowFile Format
 
   #
   # These are likely correct...
