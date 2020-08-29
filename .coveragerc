@@ -1,0 +1,16 @@
+[run]
+branch = true
+source =
+    zeroae.nifi_flowfile
+
+[paths]
+source =
+    src
+    **/site-packages
+
+[report]
+omit =
+    setup.py
+    src/zeroae/nifi_flowfile/__main__.py
+    src/zeroae/nifi_flowfile/_version.py
+    tests/*

@@ -19,10 +19,10 @@ ght:
     - ( ) None
 
   license:
-    - (*) MIT
+    - ( ) MIT
     - ( ) BSD
     - ( ) ISC
-    - ( ) Apache
+    - (*) Apache
     - ( ) GNUv3
     - ( ) Proprietary
 
@@ -30,13 +30,13 @@ cookiecutter:
   #
   # These were guess based on the repository information
   # You probably want to customize them.
-  project_namespace: "{{ cookiecutter.github_organization.lower().replace(' ', '_').replace('-', '_') }}"
-  project_slug: "{{ cookiecutter.project_repo.lower().replace(' ', '_').replace('-', '_').replace('.', '_').replace(cookiecutter.project_namespace+'_', '') }}"
-  project_name: "{{ cookiecutter.project_namespace }}'s {{ cookiecutter.project_slug }}"
+  project_namespace: "zeroae"
+  project_slug: "nifi_flowfile"
+  project_name: "zeroae's nifi_flowfile"
 
   #
   # These are likely correct...
-  anaconda_organization: "{{ cookiecutter.github_organization }}"
+  anaconda_organization: "zeroae"
 
   #
   # These should not be changed at the moment...
@@ -47,9 +47,9 @@ cookiecutter:
 
   #
   # These should probably be left alone. They came from github
-  full_name: "{{ github.author.name }}"
-  email: "{{ github.author.email }}"
-  github_username: "{{ github.author.username }}"
-  github_organization: "{{ github.repository.full_name.split('/')[0] }}"
-  project_repo: "{{ github.repository.name }}"
-  project_short_description: "{{ github.repository.description }}"
+  full_name: Patrick Sodré
+  email: patrick@zero-ae.com
+  github_username: sodre
+  github_organization: zeroae
+  project_repo: nifi.flowfile
+  project_short_description: NiFi FlowFile Serializer
