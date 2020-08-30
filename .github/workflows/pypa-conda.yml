@@ -37,7 +37,7 @@ jobs:
           path: ~/.cache/pip
           key: ${{ matrix.os }}-py${{ matrix.python-version }}-pip-black${{matrix.black-version}}-flake8${{matrix.flake8-version }}
       - name: Install Black and Flake8
-        run: pip install black flake8
+        run: pip install black=${{matrix.black-version}} flake8=${{matrix.flake8-version}}
       - name: Enforce black formatting
         run: black --check .
       - name: Enforce Flake8
