@@ -34,10 +34,8 @@ def test_command_line_interface():
     runner = CliRunner()
     result = runner.invoke(cli.flowfile)
     assert result.exit_code == 0
-    assert "Replace this message" in result.output
     help_result = runner.invoke(cli.flowfile, ["--help"])
     assert help_result.exit_code == 0
-    assert "--help  Show this message and exit." in help_result.output
 
 
 def test_pack_unpack_singleton():
