@@ -77,7 +77,7 @@ setup_kwargs = dict(
     long_description_content_type="text/x-rst",
     include_package_data=True,
     keywords="flowfile nifi",
-    name="nifi-flowfile",
+    name="nifi.flowfile",
     package_dir={"": "src"},
     packages=find_namespace_packages(where="./src"),
     setup_requires=setup_requirements,
