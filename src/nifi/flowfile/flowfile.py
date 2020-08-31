@@ -1,7 +1,7 @@
 from copy import deepcopy
 from typing import Dict
 
-from nifi.flowfile.attributes import CoreAttributes
+from .attributes import CoreAttributes
 
 
 class FlowFile(object):
@@ -9,11 +9,18 @@ class FlowFile(object):
     _content = b""
 
     def __init__(self, attributes, content):
-        self._attributes = attributes
+        self._attributes = (
+            CoreAttributes.default_attributes() if attributes is None else attributes
+        )
         self._content = content
 
     def __getitem__(self, item):
         return self.get_attribute(item)
+
+    def __eq__(self, other):
+        if not isinstance(other, FlowFile):
+            return False
+        return other._attributes == self._attributes and other._content == self._content
 
     def get_attribute(self, item):
         return self._attributes.get(item)
@@ -27,7 +34,7 @@ class FlowFile(object):
     def put_all_attributes(self, **kwargs):
         new_attributes = deepcopy(self._attributes)
         new_attributes.update(kwargs)
-        new_attributes.update(CoreAttributes.create_default_attributes())
+        new_attributes.update(CoreAttributes.default_attributes())
         return FlowFile(new_attributes, self._content)
 
     def del_attribute(self, key):
@@ -37,5 +44,8 @@ class FlowFile(object):
         new_attributes: dict = deepcopy(self._attributes)
         for key in keys & new_attributes.keys():
             del new_attributes[key]
-        new_attributes.update(CoreAttributes.create_default_attributes())
+        new_attributes.update(CoreAttributes.default_attributes())
         return FlowFile(new_attributes, self._content)
+
+    def get_content(self) -> bytes:
+        return self._content

@@ -6,7 +6,7 @@ from io import BytesIO
 import pytest
 from click.testing import CliRunner
 from nifi import flowfile
-from nifi.flowfile import cli
+from nifi.flowfile import cli, FlowFile
 from nifi.flowfile.stream import FlowFileStreamReader, FlowFileStreamWriter
 
 
@@ -24,7 +24,7 @@ def flowfile_fragments():
         }
 
     return [
-        (attributes(i), data[i].to_bytes(1, byteorder="big"))
+        (FlowFile(attributes(i), data[i].to_bytes(1, byteorder="big")))
         for i in range(fragment_count)
     ]
 
@@ -41,19 +41,19 @@ def test_command_line_interface():
 def test_pack_unpack_singleton():
     data = b"Hello World!"
     attributes = dict(abc="bca")
+    ff = FlowFile(attributes=attributes, content=data)
 
     with BytesIO() as bytes_out:
         ff_writer = FlowFileStreamWriter(bytes_out)
-        ff_writer.write(attributes, data)
+        ff_writer.write(ff)
         encoded = bytes_out.getvalue()
 
     with BytesIO(encoded) as bytes_in:
         ff_reader = FlowFileStreamReader(bytes_in)
-        unpacked_attributes, unpacked_data = ff_reader.read()
+        ff_unpacked = ff_reader.read()
         bytes_in.close()
 
-    assert unpacked_data == data
-    assert unpacked_attributes == attributes
+    assert ff_unpacked == ff
 
 
 def test_pack_unpack_fragments(flowfile_fragments):

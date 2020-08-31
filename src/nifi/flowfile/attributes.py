@@ -17,7 +17,7 @@ class CoreAttributes(Enum):
     ALTERNATE_IDENTIFIER = "alternate.identifier"
 
     @staticmethod
-    def create_default_attributes():
+    def default_attributes():
         uuid = str(uuid4())
         return {
             CoreAttributes.UUID: uuid,

@@ -2,6 +2,8 @@
 import io
 from io import RawIOBase
 
+from .flowfile import FlowFile
+
 MAX_VALUE_2_BYTES = 65535
 MAGIC_HEADER = b"NiFiFF3"
 
@@ -137,7 +139,7 @@ class FlowFileStreamReader(FlowFileStreamIOBase):
         self._next_header = read_header(self._fp)
         self._have_read_something = True
 
-        return attributes, content
+        return FlowFile(attributes, content)
 
     def __iter__(self):
         return self
@@ -158,17 +160,16 @@ class FlowFileStreamWriter(FlowFileStreamIOBase):
         self._fp = fp
 
     def write_all(self, iterable):
-        for attributes, content in iterable:
-            self.write(attributes, content)
+        for flowfile in iterable:
+            self.write(flowfile)
 
-    def write(self, attributes: dict, content: bytes):
+    def write(self, flowfile: FlowFile):
         self._fp.write(MAGIC_HEADER)
 
-        attributes = {} if attributes is None else attributes
-        write_attributes(self._fp, attributes)
+        write_attributes(self._fp, flowfile.get_attributes())
 
-        write_long(self._fp, len(content))
-        self._fp.write(content)
+        write_long(self._fp, len(flowfile.get_content()))
+        self._fp.write(flowfile.get_content())
 
 
 def open(name, mode="r", **kwargs):
