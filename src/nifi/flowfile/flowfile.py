@@ -1,26 +1,18 @@
+import attr
+
 from copy import deepcopy
 from typing import Dict
 
 from .attributes import CoreAttributes
 
 
+@attr.s
 class FlowFile(object):
-    _attributes = None
-    _content = b""
-
-    def __init__(self, attributes, content):
-        self._attributes = (
-            CoreAttributes.default_attributes() if attributes is None else attributes
-        )
-        self._content = content
+    _attributes = attr.ib(factory=CoreAttributes.default_attributes)
+    _content = attr.ib(default=b"")
 
     def __getitem__(self, item):
         return self.get_attribute(item)
-
-    def __eq__(self, other):
-        if not isinstance(other, FlowFile):
-            return False
-        return other._attributes == self._attributes and other._content == self._content
 
     def get_attribute(self, item):
         return self._attributes.get(item)
