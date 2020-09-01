@@ -6,7 +6,7 @@ from nifi.flowfile import FlowFile
 from sqs_workers.codecs import CONTENT_TYPES_CODECS, get_codec
 from nifi.flowfile.stream import FlowFileStreamReader, FlowFileStreamWriter
 
-__all__ = ["get_codec"]
+__all__ = ["get_codec", "FLOWFILE_CODEC_TYPE"]
 
 
 class FlowFileStreamCodec(object):
@@ -23,8 +23,9 @@ class FlowFileStreamCodec(object):
         ff3_data = base64.b64decode(serialized.encode("utf-8"))
         with io.BytesIO(ff3_data) as bytes_in:
             reader = FlowFileStreamReader(bytes_in)
-            messages = [FlowFile(attributes, content) for attributes, content in reader]
+            messages = list(reader)
         return messages
 
 
-CONTENT_TYPES_CODECS["flowfile-v3"] = FlowFileStreamCodec
+FLOWFILE_CODEC_TYPE = "flowfile-v3"
+CONTENT_TYPES_CODECS[FLOWFILE_CODEC_TYPE] = FlowFileStreamCodec
